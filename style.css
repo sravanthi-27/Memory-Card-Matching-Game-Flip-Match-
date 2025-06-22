@@ -1,0 +1,141 @@
+/* Color Themes */
+:root {
+  --bg-color: #6e7762;
+  --text-color: #1a1a1a;
+  --card-bg: #ffffff;
+  --matched-bg: #c8e6c9;
+  --flip-bg: #a87994;
+}
+
+body.dark {
+  --bg-color: #1e1e2f;
+  --text-color: #f0f0f0;
+  --card-bg: #2c2c3a;
+  --matched-bg: #4caf50;
+  --flip-bg: #f6f6ee;
+}
+
+/* Layout */
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: var(--bg-color);
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.mode-toggle-wrapper {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+/* Toggle Switch */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  background-color: #bbb;
+  border-radius: 24px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: 0.4s;
+}
+
+.slider:before {
+  content: "";
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #4caf50;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Game Layout */
+.game-container {
+  max-width: 600px;
+  width: 100%;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.card {
+  background-color: var(--card-bg);
+  border: 2px solid #ccc;
+  height: 100px;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.3s, background-color 0.3s;
+}
+
+.card.matched {
+  background-color: var(--matched-bg);
+  cursor: default;
+}
+
+.card.flip {
+  background-color: var(--flip-bg);
+}
+
+@media (max-width: 500px) {
+  .card {
+    height: 70px;
+    font-size: 1.5rem;
+  }
+}
